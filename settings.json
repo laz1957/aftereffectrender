@@ -1,0 +1,14 @@
+{
+    "SourceVideoPath" : "C:/DISK_D/INPUT/",
+    "ListSourceFile" : "source01.csv",
+    "OutRenderPath" : "C:/DISK_D/OUTPUT/",
+    "EmojiImagesPath" : "/img/",
+    "DefaultEmojiImage" : "check.png",               
+    "ListEmojiImages": 
+     {
+                      "x01" : "smile1.png",          // 😀
+                      "x02" : "wow.png",             // 😲
+                      "x03" :  "confused.png"        // 🤨
+
+     }
+}

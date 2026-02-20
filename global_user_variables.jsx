@@ -1,0 +1,12 @@
+var SETTINGSFILENAME = 'settings.json'  // имя файла настроек Должен находиться в одном каталоге с главным скриптом
+var CAPTION =1;
+var PARAM =0;                   // эти три параметра менять нельзя !!!!
+var EMOJI =2;
+var TOP_HEIGHT_TEXT =10;      // Отступ от вернего края композиции
+var BASE_FONT_SIZE = 40;       // Базовый шрифт для длинных сообщений
+var BIG_FONT_SIZE = 80;        //  Для сообщений в одну строку
+var SUPER_BIG_FONT_SIZE = 120; //  для коротких сообщений длиной не более SMALL_TEXT_LENHT
+var DELTA_LINE = 1.4;         // Разброс ширины линииE
+var WIDTH_KOEFFICIENT=0.8;    // Коеффициент для расчета заны текста
+var EMOJYI_SIZE = 70;         // размер emodji
+var SMALL_TEXT_LENHT =7;      // Количество символов в тексте
