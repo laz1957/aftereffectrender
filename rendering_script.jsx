@@ -1,5 +1,6 @@
+ // Версия от 22.02.2026
 #include "global_user_variables.jsx";
-var RenderObj = new Object;
+var RenderObj = new Object;   
     RenderObj.SourceArray = new Array;
     RenderObj.Settings = (function ()
     {
@@ -282,4 +283,5 @@ function GetLayer(targetName,comp)
     }
     return foundLayer;
 }
+
  
