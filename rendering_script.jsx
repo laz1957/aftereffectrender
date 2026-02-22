@@ -83,22 +83,24 @@ var RenderObj = new Object;
 
             var textLayer = comp.layers.addBoxText([textW,textH],text);
             textLayer.name = name;
-            var textRect = GetLayerBoundsInComp(textLayer,comp.time)
-            
+            // textLayer.property("Scale").setValue([100,100]);
+             var textRect = GetLayerBoundsInComp(textLayer,comp.time);
             var textProp = textLayer.property("Source Text");
             var textDocument = textProp.value;
             textDocument.fontSize = BASE_FONT_SIZE;
+
+             textProp.setValue(textDocument);
             var oneTextLine = textDocument.fontSize*DELTA_LINE;
-            var dubleTextLine = textDocument.fontSize*DELTA_LINE*2;
-           // alert("h="+textRect.height+" out="+textRect.width+" left="+textRect.left+" top="+textRect.top+" bot="+textRect.bottom);
-            if(textRect.height <= oneTextLine)
+            var dubleTextLine = textDocument.fontSize*DELTA_LINE*DELTA_LINE;
+ //   alert("h="+textRect.height+" w="+textRect.width+" left="+textRect.left+" top="+textRect.top+" bot="+textRect.bottom+" W="+comp.width);
+            if(textRect.height <=oneTextLine )
             {
                  textDocument.fontSize =BIG_FONT_SIZE;
                  status = 2;
             }
-            if(textRect.height > oneTextLine && textRect.heigh <= dubleTextLine)
+            if(textRect.height > oneTextLine  && textRect.height <= dubleTextLine)
             {
-                // textDocument.fontSize =BIG_FONT_SIZE;
+                textDocument.fontSize = BASE_FONT_SIZE;
                  status = 3;
             }
             if(text.length <= SMALL_TEXT_LENHT) {
@@ -106,19 +108,26 @@ var RenderObj = new Object;
                 status =1;
             }
             textDocument.justification = ParagraphJustification.CENTER_JUSTIFY;
-             
+             textRect = GetLayerBoundsInComp(textLayer,comp.time);
              textLayer.property("Anchor Point").setValue([0,0]);
              var centepComp = [comp.width/2,comp.height/2];
              var pos = textLayer.property("Position").value;
              var deltfaH  = (centepComp[1]-TOP_HEIGHT_TEXT)/3;
               var deltfaH3  = (centepComp[1]-TOP_HEIGHT_TEXT)/4;
+              var del= comp.width- textW;
              var targetLeft = (comp.width-textRect.width)/2;
              var targetTop  = TOP_HEIGHT_TEXT;
-             if(status > 0){
-                 targetTop =  targetTop+100;
+
+// alert("h="+textRect.height+" w="+textRect.width+" left="+textRect.left+" top="+textRect.top+" bot="+textRect.bottom+" status="+status);
+
+             if(status == 1){
+                 targetTop =  targetTop+200;
+             }
+              if(status == 2){
+                 targetTop =  targetTop+150;
              }
              if(status ==3){
-                 targetTop =  targetTop+20;//+deltfaH3;
+                 targetTop =  targetTop+100;//+deltfaH3;
              }
              textProp.setValue(textDocument);
              SetLayerTopLeftByBounds(textLayer,targetLeft,targetTop,comp.time);
@@ -249,6 +258,9 @@ function AddEmojiLayer(name,textLayer,pathImage,comp)
       var x =b.right-renderW/2; //b.left+b.width;//+pos[0];//+renderW;
       var y = b.top+b.height; //-renderH/2;
       //alert("b.right="+x+"b.top="+y);
+      var imgRect= GetLayerBoundsInComp(imgLayer,t);
+   
+        if(imgRect.right >= comp.width) x= (comp.width-renderW);
 
        SetLayerTopLeftByBounds(imgLayer,x,y,t)
      app.endUndoGroup();
